@@ -1,10 +1,9 @@
 body {
-    background-color: #f8f9fa;
-  }
-  
-  #editor {
-    line-height: 1.5;
-    resize: none;
-    width: 100%;
-  }
-  
+  background-color: #f8f9fa;
+}
+
+#editor {
+  line-height: 1.5;
+  resize: none;
+  width: 100%;
+}

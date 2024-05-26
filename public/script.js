@@ -3,6 +3,7 @@ const socket = io();
 const editor = document.getElementById('editor');
 const textSize = document.getElementById('textSize');
 const textColor = document.getElementById('textColor');
+const alertContainer = document.getElementById('alert-container');
 
 // Load the initial document content and styles
 socket.on('load document', (data) => {
@@ -51,3 +52,31 @@ textColor.addEventListener('change', () => {
   socket.emit('style change', styles);
 });
 
+// Handle new user connection
+socket.on('user connected', () => {
+  showAlert('info', 'New User Joined', 'A new user has joined the server!');
+});
+
+// Handle user disconnection
+socket.on('user disconnected', () => {
+  showAlert('warning', 'User Left', 'A user has left the server!');
+});
+
+// Function to show alerts
+function showAlert(type, strongText, message) {
+  const alert = document.createElement('div');
+  alert.className = `alert alert-${type} alert-dismissible fade show`;
+  alert.role = 'alert';
+  alert.innerHTML = `
+    <strong>${strongText}</strong> ${message}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  `;
+  alertContainer.appendChild(alert);
+
+  // Automatically dismiss the alert after 10 seconds
+  setTimeout(() => {
+    $(alert).alert('close');
+  }, 10000);
+}
