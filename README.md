@@ -26,18 +26,22 @@ The Doc Collab App is designed to facilitate real-time collaborative document ed
  3.1 Cloning the Repository
 
  First, clone the repository from GitHub:
+ 
  git clone https://github.com/hon2838/dcasm1.git
+ 
  cd doc-collab-app
 
 
  3.2 Installing Dependencies
 
  Navigate to the project directory and install the necessary dependencies:
+ 
  npm install
 
  3.3 Running the Application
 
  To start the server, use the following command:
+ 
  npm start
 
  The server will start on the default port 3000. Open your web browser and navigate to http://localhost:3000 to see the application in action.
